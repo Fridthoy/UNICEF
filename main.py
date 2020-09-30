@@ -1,6 +1,13 @@
+import os
 import pandas as pd
 
-df = pd.read_csv('C:\\Users\\Fridtjof\\Documents\\skole høst 2020\\dataAnalyse\\gruppeCSV\\Payment_File_Pledge.csv', sep=';')
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-#df.to_pickle('C:\\Users\\Fridtjof\\Documents\\skole høst 2020\\dataAnalyse\\gruppe\\pickle_files\\Pledge_File_Contacts.pkl')
-print(df)
+def load_pickle_file(filename):
+    df = pd.read_pickle(ROOT_DIR + '\\pickle_files\\' + filename + '.pkl')
+
+    return df
+
+if __name__ == '__main__':
+    df = load_pickle_file('Donor_File_Contacts')
+    print(df)
